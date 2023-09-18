@@ -10,9 +10,14 @@ int _strlen(char *s)
 {
 	int counter = 0;
 
-	while (s[counter] != '\0')
+	while (counter >= 0)
 	{
-		counter++;
+		if (s[counter] == '\0')
+			break;
+		count++;
 	}
-	return (counter);
+
+	for (counter--; counter >= 0; counter--)
+		_putchar(s[counter]);
+	_putchar('\n');
 }
