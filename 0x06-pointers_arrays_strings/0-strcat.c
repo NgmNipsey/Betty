@@ -1,16 +1,22 @@
 #include "main.h"
-#include <stdio.h>
 #include <string.h>
 
 /**
- * _strcat - concatenate the string
- *@dest: store first string.
- *@src: store second string.
- * Return: Pointer
+ * _strcat - Concatenate string.
+ * @dest: Store string.
+ * @src: store string.
+ * Return: Pointer.
  */
 char *_strcat(char *dest, char *src)
 {
-	char *myResults = strcat(dest, src);
+	int i;
+	int myResults = strlen(dest);
 
-	return (myResults);
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest(myResults + i)  = src[i];
+		dest(myResults + i) = '\0';
+	}
+	return (dest);
 }
