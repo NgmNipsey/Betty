@@ -12,35 +12,42 @@
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int ln1 = strlen(n1);
-	int ln2 = strlen(n2);
-	int lnr = (size_r - 1);
+	int overflow = 0, i = 0, j = 0, digits = 0;
+	int val1 = 0, val2 = 0, temp = 0;
 
-	int i = 0;
-	int sum;
-
-	r[lnr] = '\0';
-	lnr--;
-	while (ln1 > 0 || ln2 > 0 || lnr >= 0)
+	while (*(n1 + i) != '\0')
+		i++;
+	while (*(n2 + j) != '\0')
+		j++;
+	i--;
+	j--;
+	if (j >= size_r || i >= size_r)
+		return (0);
+	while (j >= 0 || i >= 0 || overflow == 1)
 	{
-		sum = i;
-		if (ln1 > 0)
-		{
-			sum += n1[ln1 - 1] - '0';
-			ln1--;
-		}
-		if (ln2 > 0)
-		{
-			sum += n2[ln2 - 1] - '0';
-			ln2--;
-		}
-		if (lnr < 0)
-		{
+		if (i < 0)
+			val1 = 0;
+		else
+			val1 = *(n1 + i) - '0';
+		if (j < 0)
+			val2 = 0;
+		else
+			val2 = *(n1 + j) - '0';
+		temp = val1 + val2 + overflow;
+		if (temp >= 10)
+			overflow = 1;
+		else
+			overflow = 0;
+		if (digits >= (size_r - 1))
 			return (0);
-		}
-		r[lnr] = (sum % 10) + '0';
-		i = sum / 10;
-		lnr--;
+		*(r + digits) = (temp % 10) + '0';
+		digits++;
+		j--;
+		i--;
 	}
+	if (digits == 0)
+		return (0);
+	*(r + digits) = '\0';
+	rev_string(r);
 	return (r);
 }
