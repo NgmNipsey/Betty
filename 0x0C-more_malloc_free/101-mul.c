@@ -27,7 +27,7 @@ unsigned long int _atoi(char *s)
 {
 	unsigned long int n = 0;
 	int i;
-	
+
 	for (i = 0; s[i]; i++)
 	{
 		n = n * 10 + (s[i] - '0');
