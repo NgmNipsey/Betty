@@ -1,7 +1,5 @@
 #include "dog.h"
-#include <stdio.h>
-#include <string.h>
-
+#include <stdlib.h>
 /**
  * _strlen - count string length.
  * @str: character pointer.
@@ -9,8 +7,12 @@
  */
 int _strlen(const char *str)
 {
-	int len = strlen(str);
+	int len = 0, i;
 
+	for(i = 0; str[i] != '\0'; i++)
+	{
+		len++;
+	}
 	return (len);
 }
 
@@ -22,7 +24,13 @@ int _strlen(const char *str)
  */
 char *_strcpy(char *dest, char *src)
 {
-	dest = strcpy(dest, src);
+	int i;
+
+	for (i = 0; src[i]; i++)
+	{
+		dest[i] = src[i];
+	}
+	dest[i] = '\0';
 	return (dest);
 }
 
@@ -57,6 +65,6 @@ dog_t *new_dog(char *name, float age, char *owner)
 	}
 	dog->name = _strcpy(dog->name, name);
 	dog->age = name;
-	dog->owner = strcpy(dog->owner, owner);
+	dog->owner = _strcpy(dog->owner, owner);
 	return (dog);
 }
