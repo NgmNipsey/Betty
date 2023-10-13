@@ -2,27 +2,6 @@
 #include <stdlib.h>
 
 /**
- * print_opcodes - a functio to print opcode.
- * @n: length.
- *
- * Return: void.
- */
-void print_opcodes(int n)
-{
-	int i;
-	char *p = (char *)print_opcodes;
-
-	if (n < 0)
-	{
-		printf("Error\n");
-		exit(2);
-	}
-	for (i = 0; i < n; i++)
-		printf("%02hhx ", p[i]);
-	printf("\n");
-}
-
-/**
  * main - print opcodes.
  * @argc: counts
  * @argv: vector.
@@ -31,11 +10,26 @@ void print_opcodes(int n)
  */
 int main(int argc, char **argv)
 {
+	int mbytes, i;
+	char *array;
+
 	if (argc != 2)
 	{
 		printf("Error\n");
 		exit(1);
 	}
-	print_opcodes(atoi(argv[1]));
+	mbytes = atoi(argv[1]);
+	if (mbytes < 0)
+		printf("Error\n"), exit(2);
+	array = (char *)main;
+	for (i = 0; i < mbytes; i++)
+	{
+		if (i == mbytes - 1)
+		{
+			printf("%02hhx\n", array[i]);
+			break;
+		}
+		printf("%02hhx ", array[i]);
+	}
 	return (0);
 }
