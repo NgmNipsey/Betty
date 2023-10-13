@@ -1,4 +1,6 @@
 #include "3-calc.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 /**
  * get_op_func - pointer to a function main.
@@ -18,10 +20,7 @@ int (*get_op_func(char *s))(int, int)
 	};
 	int i;
 
-	for (i = 0; i < 5; i++)
-	{
-		if (s && s[0] == ops[i].op[0] && !s[1])
-			return (ops[i].f);
-	}
-	return (NULL);
+	while (ops[i].op != NULL && *(ops[i].op) != *s)
+		i++;
+	return (ops[i].f);
 }
