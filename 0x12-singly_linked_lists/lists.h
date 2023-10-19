@@ -7,10 +7,10 @@
 /**
  * struct list_s - link list struct.
  * @str: character string.
- * @length: length.
+ * @len: length.
  * @next: to the next nodes.
  *
- * descriptions: a link list nod structure.
+ * Descriptions: a link list node structure.
  */
 typedef struct list_s
 {
