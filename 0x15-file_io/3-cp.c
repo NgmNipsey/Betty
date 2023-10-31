@@ -8,6 +8,8 @@
  *
  * Return: 0 on success, or on failure
  */
+
+int main(int argc, char **argv);
 int main(int argc, char **argv)
 {
 	int fd_from, fd_to, n_read, n_written;
